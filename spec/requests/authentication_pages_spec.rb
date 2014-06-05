@@ -26,9 +26,10 @@ describe "Authentication" do
       end
     end
 
+
     describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
-      before do
+     before do
         fill_in "Email", with: user.email.upcase
         fill_in "Password", with: user.password
         click_button "Sign in"
@@ -86,17 +87,7 @@ describe "Authentication" do
 
       describe "in the Users controller" do
 
-        describe "visiting the edit page" do
-          before { visit edit_user_path(user) }
-          it { should have_title('Sign in') }
-        end
-
-        describe "submitting to the update action" do
-          before { patch user_path(user) }
-          specify { response.should redirect_to(signin_url) }
-        end
-
-        describe "visiting user index" do
+      describe "visiting user index" do
           before { visit users_path }
           it { should have_title('Sign in') }
         end
